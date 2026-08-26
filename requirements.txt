@@ -1,0 +1,15 @@
+torch
+torchvision
+torchaudio
+transformers
+xgboost
+shap
+pytorch-grad-cam
+scikit-learn
+nibabel
+SimpleITK
+librosa
+pandas
+numpy
+pyyaml
+pytest

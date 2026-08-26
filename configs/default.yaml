@@ -1,0 +1,31 @@
+# Default Configuration
+
+project:
+  name: "Multimodal Neurological Disorder Detection"
+  classes: ["PD", "HD", "MS", "HC"] # Parkinson's, Huntington's, Multiple Sclerosis, Healthy Control
+
+hardware:
+  device: "cuda" # Switch to "cpu" if no GPU available
+  vram_constrained: true # Keeps batch sizes and model sizes small (<= 4GB VRAM)
+
+training:
+  batch_size: 4 # Small batch size for 4GB VRAM
+  epochs: 20
+  learning_rate: 0.001
+
+models:
+  imaging:
+    type: "3d_cnn" # Lightweight alternative to ViT for 4GB VRAM
+  speech:
+    type: "mfcc_cnn" # Lightweight alternative to full Wav2Vec2
+  sensor:
+    type: "lstm"
+  handwriting:
+    type: "2d_cnn"
+  clinical:
+    type: "xgboost"
+  genetic:
+    type: "mlp"
+  fusion:
+    embedding_dim: 64 # Small embedding size to save memory
+    num_heads: 4
